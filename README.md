@@ -67,11 +67,16 @@ You should see `python3 -u ./speedtest2influx.py` listed.
 cat speedtest-output.log
 ```
 
-You should see at least the folowing:
+You should see at least the following:
 
 ```
 Info : 23/08/2021 10:20:50 : Speedtest CLI Data Logger to InfluxDB started
 Info : 23/08/2021 10:20:50 : DB initialization complete
+```
+
+...and perhaps the below too:
+
+```
 Info : 23/08/2021 10:21:15 : Speedtest successful
 Info : 23/08/2021 10:21:15 : Data written to DB successfully
 ...
