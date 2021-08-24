@@ -7,11 +7,11 @@ from influxdb import InfluxDBClient
 from datetime import datetime
 
 # InfluxDB Settings
-DB_ADDRESS = os.environ.get('DB_ADDRESS', 'db_hostname.network')
+DB_ADDRESS = os.environ.get('DB_ADDRESS', '<IP addresss or localhost>')
 DB_PORT = os.environ.get('DB_PORT', 8086)
-DB_USER = os.environ.get('DB_USER', 'db_username')
-DB_PASSWORD = os.environ.get('DB_PASSWORD', 'db_password')
-DB_DATABASE = os.environ.get('DB_DATABASE', 'speedtest_db')
+DB_USER = os.environ.get('DB_USER', '<username>')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', '<password>')
+DB_DATABASE = os.environ.get('DB_DATABASE', '<database name>')
 DB_RETRY_INVERVAL = int(os.environ.get('DB_RETRY_INVERVAL', 60)) # Time before retrying a failed data upload.
 
 # Speedtest Settings
@@ -88,8 +88,8 @@ def format_for_influx(cliout):
 
 def main():
     db_initialized = False
-    
-    while(db_initialized == False): 
+
+    while(db_initialized == False):
         try:
             init_db()  # Setup the database if it does not already exist.
         except:
@@ -98,10 +98,10 @@ def main():
         else:
             logger("Info", "DB initialization complete")
             db_initialized = True
-        
+
     while (1):  # Run a Speedtest and send the results to influxDB indefinitely.
         speedtest = subprocess.run(
-            ["speedtest", "--accept-license", "--accept-gdpr", "-f", "json"], capture_output=True)
+            ["./speedtest", "--accept-license", "--accept-gdpr", "-f", "json"], capture_output=True)
 
         if speedtest.returncode == 0:  # Speedtest was successful.
             data = format_for_influx(speedtest.stdout)
