@@ -107,3 +107,9 @@ time                bandwidth  bytes     elapsed
 ```
 
 That's it.
+
+---
+
+Tested on a Raspberry Pi 4 Model B running Raspbian GNU/Linux 10 (buster) with
+- Python 3.7.3
+- InfluxDB v1.8.9 (git: 1.8 d9b56321d579)
