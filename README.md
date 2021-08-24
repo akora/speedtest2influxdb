@@ -8,6 +8,12 @@ Clone this repo onto your destination server and cd into the directory
 cd speedtest2influxdb/
 ```
 
+Make the Python script executable
+
+```shell
+chmod +x speedtest2influx.py
+```
+
 Get the offcial Speedtest CLI tool from [Ookla](https://www.speedtest.net/apps/cli)
 
 ```shell
